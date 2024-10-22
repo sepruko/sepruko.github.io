@@ -24,12 +24,14 @@
 		"url": "git+https://github.com/sepruko/sepruko.github.io.git"
 	},
 	"scripts": {
-		"dev": "astro dev",
-		"start": "astro start",
+		"check": "astro check",
 		"build": "astro check && astro build",
-		"preview": "astro preview"
+		"dev": "astro dev",
+		"preview": "astro preview",
+		"start": "astro start"
 	},
 	"devDependencies": {
+		"@astrojs/check": "~0.9.4",
 		"@astrojs/solid-js": "~4.4.2",
 		"@biomejs/biome": "~1.9.4",
 		"@iconify-json/tabler": "~1.2.5",
@@ -40,6 +42,7 @@
 		"prettier": "~3.3.3",
 		"prettier-plugin-astro": "~0.14.1",
 		"solid-js": "~1.9.2",
+		"typescript": "~5.6.3",
 		"unocss": "~0.63.6"
 	},
 	"engines": {
