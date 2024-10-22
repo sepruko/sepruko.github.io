@@ -1,4 +1,5 @@
 ---
+import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header";
 import BlankLayout from "@/layouts/BlankLayout.astro";
 
@@ -26,4 +27,6 @@ const { title, description } = Astro.props;
 
 <BlankLayout title={title} description={description}>
 	<Header slot="pre-main" />
+	<slot />
+	<Footer slot="pos-main" />
 </BlankLayout>
