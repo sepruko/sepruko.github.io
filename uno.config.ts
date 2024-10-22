@@ -1,4 +1,4 @@
-import { type UserConfig, presetIcons, presetMini } from "unocss";
+import { type UserConfig, presetIcons, presetMini, presetWebFonts } from "unocss";
 import type { Theme } from "unocss/preset-uno";
 
 export default {
@@ -14,6 +14,15 @@ export default {
 			},
 			prefix: "icon-",
 		}),
-		presetMini({ dark: "media" }),
+		presetMini({
+			dark: "media",
+		}),
+		presetWebFonts({
+			provider: "google",
+			fonts: {
+				sans: "Gantari",
+				mono: "JetBrains Mono",
+			},
+		}),
 	],
 } satisfies UserConfig<Theme>;
