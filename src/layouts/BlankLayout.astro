@@ -1,0 +1,37 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+
+interface Props {
+	/**
+	 * The title of the webpage, used for the `<title>` and `og:title`.
+	 */
+	title: string;
+
+	/**
+	 * The description of the webpage, used for `og:description`.
+	 *
+	 * @default `":3"`
+	 */
+	description?: string;
+
+	/**
+	 * The children of the layout, passed to a `<slot />`.
+	 */
+	children: any;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en" prefix="og: https://ogp.me/ns#">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<slot name="pre-main" />
+		<main>
+			<slot />
+		</main>
+		<slot name="pos-main" />
+	</body></html
+>
