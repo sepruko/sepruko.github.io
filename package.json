@@ -24,7 +24,9 @@
 		"url": "git+https://github.com/sepruko/sepruko.github.io.git"
 	},
 	"scripts": {},
-	"devDependencies": {},
+	"devDependencies": {
+		"@sepruko/shared-config": "^0.4.1"
+	},
 	"engines": {
 		"node": "^20.18.0"
 	},
