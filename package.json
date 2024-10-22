@@ -25,6 +25,7 @@
 	},
 	"scripts": {},
 	"devDependencies": {
+		"@biomejs/biome": "~1.9.4",
 		"@sepruko/shared-config": "^0.4.1"
 	},
 	"engines": {
