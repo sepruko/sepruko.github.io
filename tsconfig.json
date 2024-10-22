@@ -8,15 +8,11 @@
 		"jsxImportSource": "solid-js",
 		"paths": {
 			"@/components/*": [
-				"./components/*.astro",
-				"./components/*.jsx",
-				"./components/*.tsx",
-				"./components/*/index.astro",
-				"./components/*/index.jsx",
-				"./components/*/index.tsx"
+				"./components/*",
+				"./components/*/index.*"
 			],
 			"@/layouts/*": [
-				"./layouts/*.astro"
+				"./layouts/*"
 			]
 		}
 	},

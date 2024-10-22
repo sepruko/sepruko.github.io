@@ -1,5 +1,6 @@
 ---
-import BaseHead from "@/components/BaseHead";
+import Header from "@/components/Header";
+import BlankLayout from "@/layouts/BlankLayout.astro";
 
 interface Props {
 	/**
@@ -23,13 +24,6 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en" prefix="og: https://ogp.me/ns#">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body>
-		<main>
-			<slot />
-		</main>
-	</body>
-</html>
+<BlankLayout title={title} description={description}>
+	<Header slot="pre-main" />
+</BlankLayout>
