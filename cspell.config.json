@@ -1,0 +1,56 @@
+{
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/refs/tags/v8.15.4/cspell.schema.json",
+	"name": "@sepruko/website",
+	"version": "0.2",
+	"description": "CSpell configuration for the @sepruko/website project.",
+	"import": [
+		"@sepruko/shared-config/cspell"
+	],
+	"cache": {
+		"cacheLocation": "node_modules/.cache/cspell/cache.json",
+		"useCache": true
+	},
+	"dictionaries": [
+		"website-contributors",
+		"website-dependencies",
+		"website"
+	],
+	"dictionaryDefinitions": [
+		{
+			"name": "website",
+			"description": "Words, terms & phrases used by the @sepruko/website project.",
+			"useCompounds": true,
+			"words": []
+		},
+		{
+			"name": "website-contributors",
+			"description": "Contributors to the @sepruko/website project.",
+			"useCompounds": true,
+			"words": [
+				"NAT",
+				"Nat",
+				"nat",
+				"SEPRUKO",
+				"Sepruko",
+				"sepruko"
+			]
+		},
+		{
+			"name": "website-dependencies",
+			"description": "Words, terms & phrases used by dependencies of the @sepruko/website project.",
+			"useCompounds": true,
+			"words": [
+				"ASTRO",
+				"Astro",
+				"astro",
+				"WITHASTRO",
+				"WithAstro",
+				"withastro"
+			]
+		}
+	],
+	"words": [
+		"JSR",
+		"jsr"
+	]
+}
