@@ -1,0 +1,47 @@
+---
+export interface Props {
+	/**
+	 * The title of the webpage, used for the `<title>` and `og:title`.
+	 */
+	title: string;
+
+	/**
+	 * The description of the webpage, used for `og:description`.
+	 *
+	 * @default `":3"`
+	 */
+	description?: string;
+
+	/**
+	 * The type of the webpage, used for `og:type`.
+	 *
+	 * @default `"website"`
+	 */
+	type?: string;
+
+	/**
+	 * The children of the layout, passed to a `<slot />`.
+	 */
+	children: any;
+}
+
+const { title, description = ":3", type = "website" } = Astro.props;
+---
+
+<html lang="en" prefix="og: https://ogp.me/ns#">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>the kitty zone</title>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={Astro.request.url} />
+		<meta property="og:site_name" content="sepruko.dev" />
+	</head>
+	<body>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>

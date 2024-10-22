@@ -1,2 +1,8 @@
+# astro
+.astro/
+
+# build output
+build/
+
 # node
 node_modules/

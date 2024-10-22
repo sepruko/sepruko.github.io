@@ -7,5 +7,16 @@
 		"@sepruko/shared-config/biome/gql",
 		"@sepruko/shared-config/biome/js",
 		"@sepruko/shared-config/biome/json"
-	]
+	],
+	"files": {
+		"ignore": [
+			"**/__*__/**/*",
+			"**/build/**/*",
+			"**/dist/**/*",
+			"**/node_modules/**/*",
+			"**/out/**/*",
+			"**/*.astro",
+			"**/*.snap.*"
+		]
+	}
 }
