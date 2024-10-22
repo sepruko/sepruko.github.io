@@ -10,7 +10,10 @@
 			"@/components/*": [
 				"./components/*.astro",
 				"./components/*.jsx",
-				"./components/*.tsx"
+				"./components/*.tsx",
+				"./components/*/index.astro",
+				"./components/*/index.jsx",
+				"./components/*/index.tsx"
 			],
 			"@/layouts/*": [
 				"./layouts/*.astro"
