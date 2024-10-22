@@ -1,4 +1,6 @@
+import solidJS from "@astrojs/solid-js";
 import type { AstroUserConfig } from "astro/config";
+import unoCSS from "unocss/astro";
 
 export default {
 	build: {
@@ -23,8 +25,7 @@ export default {
 		},
 		locales: ["en-US", "en"],
 	},
-	image: {},
-	integrations: [],
+	integrations: [solidJS({ devtools: true }), unoCSS()],
 	markdown: {
 		shikiConfig: {
 			defaultColor: false,
