@@ -1,0 +1,43 @@
+{
+	"$schema": "https://json.schemastore.org/package",
+	"name": "@sepruko/website",
+	"version": "0.1.0",
+	"description": "Nat Sepruko's personal website.",
+	"keywords": [
+		"astro",
+		"personal-website",
+		"sepruko",
+		"website",
+		"withastro"
+	],
+	"homepage": "https://sepruko.dev/",
+	"bugs": "https://github.com/sepruko/sepruko.github.io/issues",
+	"license": "MS-PL",
+	"author": "Nat Sepruko <me@sepruko.dev> (https://sepruko.dev/)",
+	"files": [],
+	"type": "module",
+	"exports": {
+		"./package.json": "./package.json"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sepruko/sepruko.github.io.git"
+	},
+	"scripts": {},
+	"devDependencies": {},
+	"engines": {
+		"node": "^20.18.0"
+	},
+	"devEngines": {
+		"node": ">=20.18.0",
+		"pnpm": "^9.12.0"
+	},
+	"private": true,
+	"pnpm": {
+		"overrides": {},
+		"packageExtensions": {},
+		"onlyBuiltDependencies": [],
+		"patchedDependencies": {}
+	},
+	"packageManager": "pnpm@9.12.0"
+}
