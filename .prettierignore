@@ -1,0 +1,14 @@
+# biome
+*.cjs
+*.css
+*.cts
+*.json
+*.jsonc
+*.jsx
+*.mjs
+*.mts
+*.ts
+*.tsx
+
+# node
+node_modules/

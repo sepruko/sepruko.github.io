@@ -14,6 +14,9 @@ importers:
       '@sepruko/shared-config':
         specifier: ^0.4.1
         version: 0.4.1(@biomejs/biome@1.9.4)
+      prettier:
+        specifier: ~3.3.3
+        version: 3.3.3
 
 packages:
 
@@ -91,6 +94,11 @@ packages:
       vitest:
         optional: true
 
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==, tarball: https://registry.npmjs.org/prettier/-/prettier-3.3.3.tgz}
+    engines: {node: '>=14'}
+    hasBin: true
+
 snapshots:
 
   '@biomejs/biome@1.9.4':
@@ -131,3 +139,5 @@ snapshots:
   '@sepruko/shared-config@0.4.1(@biomejs/biome@1.9.4)':
     optionalDependencies:
       '@biomejs/biome': 1.9.4
+
+  prettier@3.3.3: {}
