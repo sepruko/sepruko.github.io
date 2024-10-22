@@ -4,13 +4,22 @@
 		"@sepruko/shared-config/tsconfig/browser"
 	],
 	"compilerOptions": {
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
 		"paths": {
-			"@components/*": [
-				"./src/components/*"
+			"@/components/*": [
+				"./components/*.astro",
+				"./components/*.jsx",
+				"./components/*.tsx"
 			],
-			"@layouts/*": [
-				"./src/layouts/*"
+			"@/layouts/*": [
+				"./layouts/*.astro"
 			]
 		}
-	}
+	},
+	"references": [
+		{
+			"path": "./tsconfig.root.json"
+		}
+	]
 }

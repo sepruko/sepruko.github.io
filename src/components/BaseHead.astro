@@ -1,0 +1,24 @@
+---
+import BaseOpenGraph from "@/components/BaseOpenGraph";
+
+export interface Props {
+	/**
+	 * The title of the webpage, used for the `<title>` and `og:title`.
+	 */
+	title: string;
+
+	/**
+	 * The description of the webpage, used for `og:description`.
+	 *
+	 * @default `":3"`
+	 */
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<BaseOpenGraph title={title} description={description} />

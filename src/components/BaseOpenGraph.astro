@@ -1,0 +1,56 @@
+---
+/**
+ * Resolves to a suitable OpenGraph protocol type based on the received `string`
+ * type parameter.
+ */
+export type OpenGraph<T extends OpenGraphType = "website"> =
+	T extends "website" ? OpenGraphWebsite : never;
+
+/**
+ * Describes basic information required for the [OpenGraph protocol].
+ *
+ * [OpenGraph protocol]: https://ogp.me/
+ */
+interface OpenGraphBasic {
+	/**
+	 * The title of the webpage, used for the `<title>` and `og:title`.
+	 */
+	title: string;
+
+	/**
+	 * The type of the webpage, used for `og:type`.
+	 *
+	 * @default `"website"`
+	 */
+	type?: OpenGraphType;
+
+	/**
+	 * The description of the webpage, used for `og:description`.
+	 *
+	 * @default `":3"`
+	 */
+	description?: string;
+}
+
+/**
+ * Options specific to a webpage whose `og:type` is `website`.
+ */
+interface OpenGraphWebsite extends OpenGraphBasic {
+	type?: "website";
+}
+
+/**
+ * Possible `og:type` values.
+ */
+export type OpenGraphType = "website";
+
+type Props = OpenGraph<"website">;
+
+const { title, type = "website", description = ":3" } = Astro.props;
+---
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.request.url} />
+<meta property="og:site_name" content="sepruko.dev" />
