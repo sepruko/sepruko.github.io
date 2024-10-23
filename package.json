@@ -26,6 +26,9 @@
 	"scripts": {
 		"build": "astro check && astro build",
 		"dev": "astro dev",
+		"lint": "astro check && biome lint --config-path biome.json . && cspell lint -c cspell.config.json .",
+		"lint:fix": "biome lint --config-path biome.json --write .",
+		"lint:fix:all": "biome lint --config-path biome.json --write --unsafe .",
 		"preview": "astro preview",
 		"start": "astro start"
 	},
