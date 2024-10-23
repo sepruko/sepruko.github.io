@@ -1,0 +1,83 @@
+name: 'Bug Report'
+description: 'File a new bug report, including accessibility requests.'
+
+title: 'bug: '
+labels: ['bug', 'triage']
+assignees: ['sepruko']
+
+body:
+  - type: 'markdown'
+    attributes:
+      value: |-
+        Thanks for taking the time to fill out a new bug report! Please do your best to fill out the required information, and remember not to submit any sensitive information.
+
+  - type: 'dropdown'
+    id: 'hosts'
+    attributes:
+      label: 'Host(s)'
+      description: 'On which hosts does this problem occur?'
+      multiple: true
+      options:
+        - 'sepruko.dev'
+        - 'sepruko.github.io'
+      default: 0
+    validations:
+      required: true
+
+  - type: 'dropdown'
+    id: 'paths'
+    attributes:
+      label: 'Path(s)'
+      description: 'Where on the website does this problem occur?'
+      multiple: true
+      options:
+        - '/'
+        - '/home'
+      default: 0
+    validations:
+      required: true
+
+  - type: 'dropdown'
+    id: 'browser-engine'
+    attributes:
+      label: 'Browser Engine(s)'
+      description: 'On which browser engines does this problem occur?'
+      multiple: true
+      options:
+        - 'Blink (e.g. Google Chrome, Microsoft Edge, Brave)'
+        - 'Gecko (e.g. Firefox)'
+        - 'LibWeb (e.g. Ladybird)'
+        - 'WebKit (e.g. Safari)'
+
+  - type: 'textarea'
+    id: 'behavior-actual'
+    attributes:
+      label: 'Encountered Problem'
+      description: "Please give a detailed description of where the website's behavior differs from what is expected"
+      placeholder: |-
+        When hovering over the so-and-so element, it causes its content to unexpectedly wrap.
+    validations:
+      required: true
+
+  - type: 'textarea'
+    id: 'behavior-expected'
+    attributes:
+      label: 'Expected Behavior'
+      description: 'What behavior do you expect to happen instead?'
+      placeholder: |-
+        Hovering over the so-and-so element should not cause its contents to wrap.
+    validations:
+      required: true
+
+  - type: 'textarea'
+    id: 'behavior-reproduction'
+    attributes:
+      label: 'Reproduction Steps'
+      description: 'Write out a list of steps taken that reproduce the behavior. Please make note of whether the problem is flaky.'
+      placeholder: |-
+        1. visit https://sepruko.dev/
+        2. hover over the so-and-so element
+        3. ...
+        4. observe that the so-and-so element's content wraps whilst it is hovered
+    validations:
+      required: true

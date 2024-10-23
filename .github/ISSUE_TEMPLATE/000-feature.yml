@@ -1,0 +1,46 @@
+name: 'Feature Request'
+description: 'File a new feature or change request, not including accessibility.'
+
+title: 'feat: '
+labels: ['feat', 'triage']
+assignees: ['sepruko']
+
+body:
+  - type: 'markdown'
+    attributes:
+      value: |-
+        Thanks for taking the time to fill out a new feature or change request! Please do your best to fill out the required information, and remember not to submit any sensitive information.
+
+  - type: 'dropdown'
+    id: 'paths'
+    attributes:
+      label: 'Path(s)'
+      description: 'Where on the website should this feature be added or change be made?'
+      multiple: true
+      options:
+        - '/'
+        - '/home'
+      default: 0
+    validations:
+      required: true
+
+  - type: 'textarea'
+    id: 'request-description'
+    attributes:
+      label: 'Request Description'
+      description: 'Please give a detailed description of the feature or change you are requesting.'
+      placeholder: |-
+        You should add a link to the footer that leads the user to this repository.
+    validations:
+      required: true
+
+  - type: 'textarea'
+    id: 'request-reasons'
+    attributes:
+      label: 'Reasoning(s)'
+      description: 'List reasons for why this feature should be implemented.'
+      placeholder: |-
+        1. it allows visitors to more easily find a place to report problems with the website, should they occur
+        2. ...
+    validations:
+      required: true
