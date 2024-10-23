@@ -16,17 +16,20 @@ concurrency:
   cancel-in-progress: true
   group: '${{ github.workflow }}-${{ github.ref }}'
 
+defaults:
+  run:
+    shell: 'bash'
+    working-directory: '.'
+
+env:
+  CI: 'GitHub Actions'
+
 permissions:
   actions: 'read'
   checks: 'write'
   contents: 'read'
   packages: 'read'
   security-events: 'write'
-
-defaults:
-  run:
-    shell: 'bash'
-    working-directory: '.'
 
 jobs:
   analyze:
