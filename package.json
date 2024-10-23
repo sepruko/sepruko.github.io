@@ -24,7 +24,6 @@
 		"url": "git+https://github.com/sepruko/sepruko.github.io.git"
 	},
 	"scripts": {
-		"check": "astro check",
 		"build": "astro check && astro build",
 		"dev": "astro dev",
 		"preview": "astro preview",
