@@ -2,7 +2,7 @@ name: 'Feature Request'
 description: 'File a new feature or change request, not including accessibility.'
 
 title: 'feat: '
-labels: ['feat', 'triage']
+labels: ['feat', 'needs triage']
 assignees: ['sepruko']
 
 body:
