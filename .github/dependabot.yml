@@ -1,0 +1,41 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+      time: '00:00'
+      timezone: 'Australia/Sydney'
+    open-pull-requests-limit: 3
+
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '00:00'
+      timezone: 'Australia/Sydney'
+    groups:
+      astro-js:
+        patterns:
+          - '@astrojs/*'
+          - 'astro'
+          - 'prettier-plugin-astro'
+        exclude-patterns:
+          - '@astro/solid-js'
+      solid-js:
+        patterns:
+          - '@astrojs/solid-js'
+          - 'solid-devtools'
+          - 'solid-js'
+    allow:
+      - dependency-type: 'direct'
+    versioning-strategy: 'increase'
+    commit-message:
+      prefix: 'deps'
+    labels: ['deps', 'needs triage']
+    assignees:
+      - 'sepruko'
+    reviewers:
+      - 'sepruko'
+    open-pull-requests-limit: 10
