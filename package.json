@@ -36,7 +36,7 @@
 		"@astrojs/check": "~0.9.4",
 		"@astrojs/solid-js": "~4.4.2",
 		"@biomejs/biome": "~1.9.4",
-		"@iconify-json/tabler": "~1.2.5",
+		"@iconify-json/tabler": "~1.2.6",
 		"@sepruko/shared-config": "^0.4.4",
 		"@types/node": "~20.16.15",
 		"astro": "~4.16.6",
