@@ -35,7 +35,7 @@
 		"@astrojs/solid-js": "~4.4.2",
 		"@biomejs/biome": "~1.9.4",
 		"@iconify-json/tabler": "~1.2.5",
-		"@sepruko/shared-config": "^0.4.2",
+		"@sepruko/shared-config": "^0.4.4",
 		"@types/node": "~20.16.14",
 		"astro": "~4.16.6",
 		"cspell": "~8.15.4",
