@@ -27,11 +27,11 @@ const { title, description } = Astro.props;
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
-	<body>
+	<body class="bg-white c-#3c3c43 dark:bg-#161618 dark:c-#dfdfd7 font-sans">
 		<slot name="pre-main" />
-		<main>
+		<main class="b-blrd-4 b-brrd-4 bg-white dark:bg-#1b1b1f flex flex-col p-b-4">
 			<slot />
 		</main>
 		<slot name="pos-main" />
-	</body></html
->
+	</body>
+</html>

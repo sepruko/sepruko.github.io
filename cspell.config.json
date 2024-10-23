@@ -20,7 +20,18 @@
 			"name": "website",
 			"description": "Words, terms & phrases used by the @sepruko/website project.",
 			"useCompounds": true,
-			"words": []
+			"words": [
+				"dvh",
+				"dvw",
+				"tlr",
+				"tlrd",
+				"trr",
+				"trrd",
+				"blr",
+				"blrd",
+				"brr",
+				"brrd"
+			]
 		},
 		{
 			"name": "website-contributors",
