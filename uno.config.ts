@@ -1,6 +1,7 @@
 import {
+	type CSSValueInput,
 	type UserConfig,
-	toEscapedSelector as e,
+	presetAttributify,
 	presetIcons,
 	presetMini,
 	presetWebFonts,
@@ -18,12 +19,17 @@ export default {
 
 					body {
 						margin: 0;
-					}
-				`.replace(/^\t{4,5}/, "");
+					}`
+					.trim()
+					.replace(/^\t{5}/, "");
 			},
 		},
 	],
 	presets: [
+		presetAttributify({
+			nonValuedAttribute: false,
+			strict: true,
+		}),
 		presetIcons({
 			autoInstall: false,
 			collections: {
@@ -48,71 +54,9 @@ export default {
 	],
 	rules: [
 		[
-			/^(?:b|border)-(tlr|tlrd|trr|trrd|blr|blrd|brr|brrd)-(\d+)$/,
-			([, corner, size], { rawSelector }): string => {
-				const selector = e(rawSelector);
-
-				// biome-ignore lint/style/useDefaultSwitchClause: exhaustive
-				switch (corner) {
-					case "tlr":
-					case "tlrd": {
-						corner = "top-left";
-						break;
-					}
-					case "trr":
-					case "trrd": {
-						corner = "top-right";
-						break;
-					}
-					case "blr":
-					case "blrd": {
-						corner = "bottom-left";
-						break;
-					}
-					case "brr":
-					case "brrd": {
-						corner = "bottom-right";
-						break;
-					}
-				}
-
-				return `
-					${selector} {
-						border-${corner}-radius: ${+size / 4}rem;
-					}
-				`.replace(/\t{4,5}/, "");
-			},
-		],
-		[
-			/^(?:h|height)-(\d+)$/,
-			([, size], { rawSelector }): string => {
-				const selector = e(rawSelector);
-
-				return `
-					${selector} {
-						height: ${+size / 4}rem;
-					}
-				`.replace(/^\t{3,4}/gm, "");
-			},
-		],
-		[
-			/^(?:h|height)-(dvh|dvw)-(\d+)$/,
-			([, unit, size], { rawSelector }): string => {
-				const selector = e(rawSelector);
-
-				return `
-					${selector} {
-						height: ${Math.max(Math.min(+size, 100), 0)}${unit};
-					}
-				`.replace(/^\t{3,4}/gm, "");
-			},
-		],
-		[
-			/^(?:p|padding)-(b|bottom|l|left|r|right|t|top)-(\d+)$/,
-			([, side, size], { rawSelector }): string => {
-				const selector = e(rawSelector);
-
-				// biome-ignore lint/style/useDefaultSwitchClause: exhaustive
+			/^b([blrt])-(\d+)$/,
+			function* ([, side, size]): Generator<CSSValueInput> {
+				// biome-ignore lint/style/useDefaultSwitchClause: Exhaustive.
 				switch (side) {
 					case "b": {
 						side = "bottom";
@@ -132,12 +76,66 @@ export default {
 					}
 				}
 
-				return `
-					${selector} {
-						padding-${side}: ${+size / 4}rem;
+				yield {
+					[`border-${side}`]: `${+size / 4}rem`,
+				};
+			},
+		],
+		[
+			/^(?:(max|min)-)?(h|height|w|width)-([lsd]?v[wh])-([1-9][0-9]?|100)$/,
+			function* ([, limit = "", dim, unit, size]): Generator<CSSValueInput> {
+				switch (dim) {
+					case "h": {
+						dim = "height";
+						break;
 					}
-				`.replace(/^\t{3,4}/gm, "");
+					case "w": {
+						dim = "width";
+						break;
+					}
+					default: {
+						break;
+					}
+				}
+
+				yield {
+					[`${limit ? `${limit}-` : ""}${dim}`]: `${size}${unit}`,
+				};
 			},
 		],
 	],
+	shortcuts: [
+		[
+			/^(b|m|p)([blrt]{2,4})-(\d+)$/,
+			([, rule, sides, size]): string => {
+				return new Set(sides).size == sides.length
+					? [...sides].map((side) => `${rule}${side}-${size}`).join(" ")
+					: undefined;
+			},
+		],
+	],
+	theme: {
+		colors: {
+			primary: {
+				dark: "#52525b",
+				DEFAULT: "#ffffff",
+			},
+			secondary: {
+				dark: "#3f3f46",
+				DEFAULT: "#fafaf9",
+			},
+			tertiary: {
+				dark: "#27272a",
+				DEFAULT: "#f5f5f4",
+			},
+			quaternary: {
+				dark: "#18181b",
+				DEFAULT: "#e7e5e4",
+			},
+			quinary: {
+				dark: "#09090b",
+				DEFAULT: "#d6d3d1",
+			},
+		},
+	},
 } satisfies UserConfig<Theme>;

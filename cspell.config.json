@@ -21,16 +21,9 @@
 			"description": "Words, terms & phrases used by the @sepruko/website project.",
 			"useCompounds": true,
 			"words": [
-				"dvh",
-				"dvw",
-				"tlr",
-				"tlrd",
-				"trr",
-				"trrd",
-				"blr",
-				"blrd",
-				"brr",
-				"brrd"
+				"blrt",
+				"lsd",
+				"wh"
 			]
 		},
 		{
@@ -55,6 +48,9 @@
 				"Astro",
 				"astro",
 				"astrojs",
+				"ATTRIBUTIFY",
+				"Attributify",
+				"attributify",
 				"codeql",
 				"Gantari",
 				"iconify",
