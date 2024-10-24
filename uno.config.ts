@@ -47,7 +47,7 @@ export default {
 		presetWebFonts({
 			provider: "google",
 			fonts: {
-				sans: "Gantari",
+				sans: "Gantari:100,400,700,900",
 				mono: "JetBrains Mono",
 			},
 		}),
@@ -82,6 +82,56 @@ export default {
 			},
 		],
 		[
+			/^(?:f|font)-(?:w|weight)-(\d|[1-9]0{2}|black|bold|extrabold|extralight|light|medium|normal|semibold|thin)$/,
+			function* ([, weight]): Generator<CSSValueInput> {
+				switch (weight) {
+					case "black": {
+						weight = "900";
+						break;
+					}
+					case "extrabold": {
+						weight = "800";
+						break;
+					}
+					case "bold": {
+						weight = "700";
+						break;
+					}
+					case "semibold": {
+						weight = "600";
+						break;
+					}
+					case "medium": {
+						weight = "500";
+						break;
+					}
+					case "normal": {
+						weight = "400";
+						break;
+					}
+					case "light": {
+						weight = "300";
+						break;
+					}
+					case "extralight": {
+						weight = "200";
+						break;
+					}
+					case "thin": {
+						weight = "100";
+						break;
+					}
+					default: {
+						break;
+					}
+				}
+
+				yield {
+					"font-weight": `${weight}`,
+				};
+			},
+		],
+		[
 			/^(?:(max|min)-)?(h|height|w|width)-([lsd]?v[wh])-([1-9][0-9]?|100)$/,
 			function* ([, limit = "", dim, unit, size]): Generator<CSSValueInput> {
 				switch (dim) {
@@ -106,7 +156,7 @@ export default {
 	],
 	shortcuts: [
 		[
-			/^(b|m|p)([blrt]{2,4})-(\d+)$/,
+			/^(b|m|p)-?([blrt]{2,4})-(\d+)$/,
 			([, rule, sides, size]): string => {
 				return new Set(sides).size == sides.length
 					? [...sides].map((side) => `${rule}${side}-${size}`).join(" ")
