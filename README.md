@@ -5,7 +5,7 @@ website, using primarily [Astro][astro], [SolidJS][solid] and [UnoCSS][unocss].
 
 # Building
 
-<details open>
+<details>
 <summary><code>requirements</code></summary>
 <br>
 
