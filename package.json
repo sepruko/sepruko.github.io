@@ -24,7 +24,8 @@
 		"url": "git+https://github.com/sepruko/sepruko.github.io.git"
 	},
 	"scripts": {
-		"build": "astro check && astro build",
+		"build": "astro build",
+		"check": "astro check && biome check --config-path biome.json . && cspell lint -c cspell.config.json . && prettier --config .prettierrc.json -c .",
 		"dev": "astro dev",
 		"format": "biome format --config-path biome.json . && prettier --config .prettierrc.json --write .",
 		"lint": "astro check && biome lint --config-path biome.json . && cspell lint -c cspell.config.json .",
