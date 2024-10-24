@@ -41,7 +41,6 @@ jobs:
       - name: 'Setup pnpm'
         uses: 'pnpm/action-setup@v4'
         with:
-          dest: './.pnpm'
           package_json_file: './package.json'
 
       - name: 'Get pnpm store location'
