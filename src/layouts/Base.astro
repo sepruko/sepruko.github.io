@@ -52,7 +52,7 @@ const {
 		{description && <meta property="description" content={description} />}
 		<meta property="og:url" content={Astro.request.url} />
 	</head>
-	<body>
+	<body bg="primary dark:quinary-dark" c="quinary-dark dark:primary" font="sans">
 		{
 			Astro.slots.has("header") && (
 				<header>
