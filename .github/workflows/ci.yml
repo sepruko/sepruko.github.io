@@ -1,0 +1,76 @@
+name: 'CI'
+run-name: ${{ format('CI for {0}', format('{0} ''{1}''', github.ref_type == 'branch' && 'Branch' || 'Tag', github.ref_name)) }}
+
+on:
+  pull_request:
+    branches: ['main']
+  push:
+    branches: ['main']
+  workflow_call:
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ format('{0}-{1}-{2}', github.workflow, github.event_name, github.ref) }}
+
+defaults:
+  run:
+    shell: 'bash'
+    working-directory: '.'
+
+env:
+  CI: 'GitHub Actions'
+
+permissions:
+  contents: 'read'
+
+jobs:
+  lint:
+    name: 'Lint repository'
+    if: ${{ !cancelled() }}
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: 'Checkout repository'
+        uses: 'actions/checkout@v4'
+
+      - name: 'Setup node'
+        uses: 'actions/setup-node@v4'
+        with:
+          node-version-file: '.node-version'
+
+      - name: 'Setup pnpm'
+        uses: 'pnpm/action-setup@v4'
+        with:
+          dest: './.pnpm'
+          package_json_file: './package.json'
+
+      - name: 'Get pnpm store location'
+        id: 'pnpm-get-store'
+        run: |-
+          echo "store-path=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - name: 'Restore cache'
+        id: 'cache-restore'
+        uses: 'actions/cache/restore@v4'
+        with:
+          path: |-
+            ${{ steps.pnpm-get-store.outputs.store-path }}
+          key: ${{ format('{0}-pnpm-store-{1}', runner.os, hashFiles('**/pnpm-lock.yaml')) }}
+          restore-keys: |-
+            ${{ format('{0}-pnpm-store-', runner.os) }}
+
+      - name: 'Install dependencies'
+        run: |-
+          pnpm i
+
+      - name: 'Save cache'
+        uses: 'actions/cache/save@v4'
+        if: ${{ !steps.cache-restore.outputs.cache-hit }}
+        with:
+          path: |-
+            ${{ steps.pnpm-get-store.outputs.store-path }}
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+
+      - name: 'Perform lint'
+        run: |-
+          pnpm run lint

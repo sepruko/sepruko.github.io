@@ -1,0 +1,66 @@
+name: 'Deploy Site'
+run-name: ${{ format('Deploy Site for {0}', format('{0} ''{1}''', github.ref_type == 'branch' && 'Branch' || 'Tag', github.ref_name)) }}
+
+on:
+  workflow_call:
+    outputs:
+      artifact-id:
+        description: 'The ID of the created Artifact containing the static page files.'
+        value: ${{ jobs.build.outputs.artifact-id }}
+  workflow_dispatch:
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ format('{0}-{1}-{2}', github.workflow, github.event_name, github.ref) }}
+
+defaults:
+  run:
+    shell: 'bash'
+    working-directory: '.'
+
+env:
+  CI: 'GitHub Actions'
+
+permissions:
+  contents: 'write'
+  deployments: 'write'
+  id-token: 'write'
+  pages: 'write'
+
+jobs:
+  build:
+    name: 'Build site'
+    uses: './.github/workflows/build.yml'
+    if: ${{ !cancelled() }}
+
+  configure-pages:
+    name: 'Configure GitHub Pages'
+    if: ${{ !cancelled() }}
+    runs-on: 'ubuntu-latest'
+
+    outputs:
+      base_path: ${{ steps.configure.outputs.base_path }}
+      base_url: ${{ steps.configure.outputs.base_url }}
+      host: ${{ steps.configure.outputs.host }}
+      origin: ${{ steps.configure.outputs.origin }}
+
+    steps:
+      - name: 'Perform configuration'
+        id: 'configure'
+        uses: 'actions/configure-pages@v5'
+        with:
+          enablement: true
+
+  deploy:
+    name: 'Deploy site'
+    if: ${{ !cancelled() }}
+    needs: ['build', 'configure-pages']
+    runs-on: 'ubuntu-latest'
+
+    environment:
+      name: 'github-pages'
+      url: ${{ needs.configure-pages.outputs.base_url }}
+
+    steps:
+      - name: 'Deploy site to GitHub Pages'
+        uses: 'actions/deploy-pages@v4'
