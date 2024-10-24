@@ -1,0 +1,78 @@
+---
+import { join } from "node:path/posix";
+
+/**
+ * Props to be passed to this layout and accessed via {@linkcode Astro.props}.
+ */
+interface Props {
+	/**
+	 * The title of the layout.
+	 *
+	 * @default
+	 * join(Astro.site.hostname, Astro.site.pathname).replace(/\/$/, "")
+	 */
+	title?: string;
+
+	/**
+	 * What appears before the {@linkcode title} in a sentence.
+	 *
+	 * @default
+	 * ""
+	 */
+	determiner?: "auto" | "" | "a" | "an" | "the";
+
+	/**
+	 * The description of the layout.
+	 *
+	 * @default
+	 * ""
+	 */
+	description?: string;
+}
+
+const {
+	title = join(Astro.site.hostname, Astro.site.pathname).replace(/\/$/, ""),
+	determiner = "",
+	description,
+} = Astro.props;
+---
+
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="" />
+		<title>{title}</title>
+		{description && <meta name="description" content={description} />}
+		<meta property="og:title" content={title} />
+		<meta property="og:determiner" content={determiner} />
+		<meta property="og:site_name" content={Astro.site.hostname} />
+		<meta property="og:type" content="website" />
+		{description && <meta property="description" content={description} />}
+		<meta property="og:url" content={Astro.request.url} />
+	</head>
+	<body>
+		{
+			Astro.slots.has("header") && (
+				<header>
+					<slot name="header" />
+				</header>
+			)
+		}
+		{
+			Astro.slots.has("default") && (
+				<main>
+					<slot />
+				</main>
+			)
+		}
+		{
+			Astro.slots.has("footer") && (
+				<footer>
+					<slot name="footer" />
+				</footer>
+			)
+		}
+	</body>
+</html>
