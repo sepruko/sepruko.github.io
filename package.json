@@ -61,7 +61,11 @@
 	"pnpm": {
 		"overrides": {},
 		"packageExtensions": {},
-		"onlyBuiltDependencies": [],
+		"onlyBuiltDependencies": [
+			"@biomejs/biome",
+			"esbuild",
+			"sharp"
+		],
 		"patchedDependencies": {}
 	},
 	"packageManager": "pnpm@9.12.0"
