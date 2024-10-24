@@ -24,8 +24,8 @@ permissions:
   contents: 'read'
 
 jobs:
-  lint:
-    name: 'Lint repository'
+  check:
+    name: 'Check repository'
     if: ${{ !cancelled() }}
     runs-on: 'ubuntu-latest'
 
@@ -71,6 +71,6 @@ jobs:
             ${{ steps.pnpm-get-store.outputs.store-path }}
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
 
-      - name: 'Perform lint'
+      - name: 'Perform check'
         run: |-
-          pnpm run lint
+          pnpm run check

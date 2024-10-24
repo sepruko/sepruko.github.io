@@ -25,7 +25,7 @@ permissions:
   contents: 'write'
 
 jobs:
-  lint:
+  ci:
     name: 'CI'
     uses: './.github/workflows/ci.yml'
     if: ${{ !cancelled() }}
@@ -33,7 +33,7 @@ jobs:
   build:
     name: 'Build site'
     if: ${{ !cancelled() }}
-    needs: ['lint']
+    needs: ['ci']
     runs-on: 'ubuntu-latest'
 
     outputs:
