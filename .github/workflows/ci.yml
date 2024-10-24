@@ -1,5 +1,5 @@
 name: 'CI'
-run-name: ${{ format('CI for {0}', format('{0} ''{1}''', github.ref_type == 'branch' && 'Branch' || 'Tag', github.ref_name)) }}
+run-name: ${{ format('CI for {0} ''{1}''', github.ref_type == 'branch' && 'Branch' || 'Tag', github.ref_name) }}
 
 on:
   pull_request:
