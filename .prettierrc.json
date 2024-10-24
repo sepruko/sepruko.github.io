@@ -13,10 +13,15 @@
 			"files": "*.{yaml,yml}",
 			"options": {
 				"printWidth": 80,
-				"proseWrap": "preserve",
 				"singleQuote": true,
 				"tabWidth": 2,
 				"useTabs": false
+			}
+		},
+		{
+			"files": ".github/workflows/**/*.yml",
+			"options": {
+				"proseWrap": "preserve"
 			}
 		},
 		{

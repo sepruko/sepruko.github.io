@@ -8,8 +8,10 @@ assignees: ['sepruko']
 body:
   - type: 'markdown'
     attributes:
-      value: |-
-        Thanks for taking the time to fill out a new bug report! Please do your best to fill out the required information, and remember not to submit any sensitive information.
+      value: >-
+        Thanks for taking the time to fill out a new bug report! Please do your
+        best to fill out the required information, and remember not to submit
+        any sensitive information.
 
   - type: 'dropdown'
     id: 'hosts'
@@ -53,9 +55,12 @@ body:
     id: 'behavior-actual'
     attributes:
       label: 'Encountered Problem'
-      description: "Please give a detailed description of where the website's behavior differs from what is expected"
-      placeholder: |-
-        When hovering over the so-and-so element, it causes its content to unexpectedly wrap.
+      description: >-
+        Please give a detailed description of where the website's behavior
+        differs from what is expected
+      placeholder: >-
+        When hovering over the so-and-so element, it causes its content to
+        unexpectedly wrap.
     validations:
       required: true
 
@@ -64,8 +69,9 @@ body:
     attributes:
       label: 'Expected Behavior'
       description: 'What behavior do you expect to happen instead?'
-      placeholder: |-
-        Hovering over the so-and-so element should not cause its contents to wrap.
+      placeholder: >-
+        Hovering over the so-and-so element should not cause its contents to
+        wrap.
     validations:
       required: true
 
@@ -73,7 +79,9 @@ body:
     id: 'behavior-reproduction'
     attributes:
       label: 'Reproduction Steps'
-      description: 'Write out a list of steps taken that reproduce the behavior. Please make note of whether the problem is flaky.'
+      description: >-
+        Write out a list of steps taken that reproduce the behavior. Please make
+        note of whether the problem is flaky.
       placeholder: |-
         1. visit https://sepruko.dev/
         2. hover over the so-and-so element

@@ -1,5 +1,6 @@
 name: 'Feature Request'
-description: 'File a new feature or change request, not including accessibility.'
+description: >-
+  File a new feature or change request, not including accessibility.
 
 title: 'feat: '
 labels: ['feat', 'needs triage']
@@ -8,14 +9,17 @@ assignees: ['sepruko']
 body:
   - type: 'markdown'
     attributes:
-      value: |-
-        Thanks for taking the time to fill out a new feature or change request! Please do your best to fill out the required information, and remember not to submit any sensitive information.
+      value: >-
+        Thanks for taking the time to fill out a new feature or change request!
+        Please do your best to fill out the required information, and remember
+        not to submit any sensitive information.
 
   - type: 'dropdown'
     id: 'paths'
     attributes:
       label: 'Path(s)'
-      description: 'Where on the website should this feature be added or change be made?'
+      description: >-
+        Where on the website should this feature be added or change be made?
       multiple: true
       options:
         - '/'
@@ -28,9 +32,12 @@ body:
     id: 'request-description'
     attributes:
       label: 'Request Description'
-      description: 'Please give a detailed description of the feature or change you are requesting.'
-      placeholder: |-
-        You should add a link to the footer that leads the user to this repository.
+      description: >-
+        Please give a detailed description of the feature or change you are
+        requesting.
+      placeholder: >-
+        You should add a link to the footer that leads the user to this
+        repository.
     validations:
       required: true
 
