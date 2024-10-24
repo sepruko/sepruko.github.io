@@ -21,6 +21,7 @@
 			"description": "Words, terms & phrases used by the @sepruko/website project.",
 			"useCompounds": true,
 			"words": [
+				"aeiou",
 				"blrt",
 				"lsd",
 				"wh"
