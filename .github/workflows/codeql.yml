@@ -12,10 +12,6 @@ on:
     - cron: '00 13 * 10-12 0'
   workflow_dispatch:
 
-concurrency:
-  cancel-in-progress: true
-  group: ${{ format('codeql-{0}-{1}', github.event_name, github.ref) }}
-
 defaults:
   run:
     shell: 'bash'

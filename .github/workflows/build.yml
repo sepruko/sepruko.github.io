@@ -10,10 +10,6 @@ on:
         value: ${{ jobs.build.outputs.artifact-id }}
   workflow_dispatch:
 
-concurrency:
-  cancel-in-progress: true
-  group: ${{ format('build-{0}-{1}', github.event_name, github.ref) }}
-
 defaults:
   run:
     shell: 'bash'
@@ -26,15 +22,9 @@ permissions:
   contents: 'write'
 
 jobs:
-  ci:
-    name: 'CI'
-    uses: './.github/workflows/ci.yml'
-    if: ${{ !cancelled() }}
-
   build:
     name: 'Build site'
     if: ${{ !cancelled() && success() }}
-    needs: ['ci']
     runs-on: 'ubuntu-latest'
 
     outputs:

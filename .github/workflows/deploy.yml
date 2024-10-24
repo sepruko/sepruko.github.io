@@ -14,7 +14,7 @@ on:
 
 concurrency:
   cancel-in-progress: true
-  group: ${{ format('deploy-{0}-{1}', github.event_name, github.ref) }}
+  group: ${{ format('deploy-{0}', github.ref) }}
 
 defaults:
   run:
@@ -31,10 +31,23 @@ permissions:
   pages: 'write'
 
 jobs:
+  checks:
+    name: 'Check repository'
+    uses: './.github/workflows/ci.yml'
+    if: ${{ !cancelled() }}
+
+    concurrency:
+      cancel-in-progress: true
+      group: ${{ format('deploy-checks-{0}-{1}') }}
+
   build:
     name: 'Build site'
     uses: './.github/workflows/build.yml'
     if: ${{ !cancelled() && github.event_name != 'push' || contains(github.event.head_commit.message, '[deploy]') }}
+
+    concurrency:
+      cancel-in-progress: true
+      group: ${{ format('deploy-build-{0}-{1}', github.event_name, github.ref) }}
 
   configure-pages:
     name: 'Configure GitHub Pages'
