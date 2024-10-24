@@ -33,7 +33,7 @@ jobs:
 
   build:
     name: 'Build site'
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && success() }}
     needs: ['ci']
     runs-on: 'ubuntu-latest'
 

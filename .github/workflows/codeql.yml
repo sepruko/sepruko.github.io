@@ -34,6 +34,7 @@ permissions:
 jobs:
   analyze:
     name: 'Analyze (${{ matrix.language }})'
+    if: ${{ !cancelled() }}
     runs-on: ${{ matrix.language == 'swift' && 'macos-latest' || 'ubuntu-latest' }}
 
     strategy:
