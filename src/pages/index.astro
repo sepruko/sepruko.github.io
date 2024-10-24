@@ -1,5 +1,10 @@
 ---
+import FooterContent from "@/components/FooterContent.astro";
+import Hero from "@/components/home/Hero";
 import BaseLayout from "@/layouts/Base.astro";
 ---
 
-<BaseLayout description="the kitty zone">hello 🐈‍⬛</BaseLayout>
+<BaseLayout description="the kitty zone">
+	<Hero name="Nat Sepruko" subtext="✨🐈‍⬛" />
+	<FooterContent slot="footer" />
+</BaseLayout>

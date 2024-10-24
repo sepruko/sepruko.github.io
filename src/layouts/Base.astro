@@ -52,24 +52,36 @@ const {
 		{description && <meta property="description" content={description} />}
 		<meta property="og:url" content={Astro.request.url} />
 	</head>
-	<body bg="primary dark:quinary-dark" c="quinary-dark dark:primary" font="sans">
+	<body
+		bg="secondary dark:quaternary-dark"
+		c="quinary-dark dark:primary"
+		flex="~ nowrap col"
+		font="sans"
+		select="none"
+	>
 		{
 			Astro.slots.has("header") && (
-				<header>
+				<header bg="secondary dark:quaternary-dark" flex="~ nowrap row" sticky="~">
 					<slot name="header" />
 				</header>
 			)
 		}
 		{
 			Astro.slots.has("default") && (
-				<main>
+				<main bg="primary dark:quinary-dark" flex="~ nowrap col" h="vh" w="vw">
 					<slot />
 				</main>
 			)
 		}
 		{
 			Astro.slots.has("footer") && (
-				<footer>
+				<footer
+					bg="secondary dark:quaternary-dark"
+					c="quaternary-dark dark:quaternary"
+					flex="~ items-center justify-center nowrap row"
+					font="size-3"
+					w="vw"
+				>
 					<slot name="footer" />
 				</footer>
 			)
